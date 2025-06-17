@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Star Wars - Explorador Star Wars</title>
+    <script src="https://cdn.tailwindcss.com"></script> 
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body id="busquedas-body" class="min-h-screen font-sans text-white">
+
+    <header class="w-full py-6 bg-black bg-opacity-70 text-center sticky top-0 z-50">
+        <h1 class="text-4xl md:text-5xl font-bold text-yellow-400">Explorador Star Wars</h1>
+        <p class="mt-2 text-lg md:text-xl text-gray-300">Descubre todos los secretos del universo Star Wars</p>
+    </header>
+
+    <!-- Botón "Volver al inicio" -->
+    <div class="text-center mt-6">
+        <a href="index.html" class="volver-inicio-btn inline-block px-6 py-3 bg-yellow-400 text-black font-bold rounded-full shadow-lg hover:bg-yellow-500 transition-all duration-300">
+            Volver al inicio
+        </a>
+    </div>
+
+    <!-- Barra de búsqueda -->
+    <div class="max-w-4xl mx-auto mt-8">
+        <form id="searchForm" class="flex flex-col md:flex-row gap-4">
+            <input type="text" id="searchInput" placeholder="Buscar por nombre..." 
+                   class="flex-grow px-4 py-3 rounded-lg border border-gray-600 bg-black text-white focus:outline-none focus:ring-2 focus:ring-yellow-400" />
+            <button type="submit" class="px-6 py-3 bg-yellow-400 text-black font-bold rounded-lg hover:bg-yellow-500 transition-all">
+                Buscar
+            </button>
+        </form>
+    </div>
+
+    <nav class="w-full py-4 bg-black bg-opacity-50 sticky top-20 z-40">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex flex-wrap justify-center gap-4">
+                <button class="nav-button px-6 py-3 rounded-lg font-bold active" data-section="people">
+                    Personajes
+                </button>
+                <button class="nav-button px-6 py-3 rounded-lg font-bold" data-section="planets">
+                    Planetas
+                </button>
+                <button class="nav-button px-6 py-3 rounded-lg font-bold" data-section="starships">
+                    Naves Estelares
+                </button>
+                <button class="nav-button px-6 py-3 rounded-lg font-bold" data-section="films">
+                    Películas
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="flex-grow w-full max-w-7xl mx-auto px-4 py-8">
+        <!-- Sección de Personajes -->
+        <section id="people" class="section-content">
+            <h2 class="text-3xl font-bold text-center section-title">Personajes de Star Wars</h2>
+            <div id="loading-people" class="text-center py-8">
+                <div class="loading-spinner mx-auto mb-4"></div>
+                <div class="text-xl text-yellow-400">Cargando personajes de la galaxia...</div>
+            </div>
+            <div id="results-people" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"></div>
+        </section>
+
+        <!-- Sección de Planetas -->
+        <section id="planets" class="section-content hidden">
+            <h2 class="text-3xl font-bold text-center section-title">Planetas de Star Wars</h2>
+            <div id="loading-planets" class="text-center py-8">
+                <div class="loading-spinner mx-auto mb-4"></div>
+                <div class="text-xl text-yellow-400">Explorando planetas lejanos...</div>
+            </div>
+            <div id="results-planets" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"></div>
+        </section>
+
+        <!-- Sección de Naves -->
+        <section id="starships" class="section-content hidden">
+            <h2 class="text-3xl font-bold text-center section-title">Naves Estelares</h2>
+            <div id="loading-starships" class="text-center py-8">
+                <div class="loading-spinner mx-auto mb-4"></div>
+                <div class="text-xl text-yellow-400">Analizando naves estelares...</div>
+            </div>
+            <div id="results-starships" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"></div>
+        </section>
+
+        <!-- Sección de Películas -->
+        <section id="films" class="section-content hidden">
+            <h2 class="text-3xl font-bold text-center section-title">Saga Star Wars</h2>
+            <div id="loading-films" class="text-center py-8">
+                <div class="loading-spinner mx-auto mb-4"></div>
+                <div class="text-xl text-yellow-400">Cargando la saga completa...</div>
+            </div>
+            <div id="results-films" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+        </section>
+    </main>
+
+    <footer class="w-full py-4 bg-black bg-opacity-70 text-center text-sm text-gray-400">
+        <p>&copy; 2025 Star Wars. Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- Reproductor de audio externo -->
+    <audio id="background-music" loop>
+        <source src="./assets/audio/star-wars-theme.mp3" type="audio/mpeg">
+        Tu navegador no soporta la reproducción de audio.
+    </audio>
+
+    <!-- Botón de Darth Vader para muteo -->
+    <button id="toggle-music" class="fixed bottom-6 right-6 z-50 w-16 h-16 rounded-full overflow-hidden shadow-xl border-4 border-yellow-400 hover:border-white transition-all duration-300">
+        <img src="./assets/images/darth-vader.png" alt="Darth Vader" class="w-full h-full object-cover">
+    </button>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,208 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-image: url('https://images.unsplash.com/photo-1538370965046-79c0d6907d47'); 
+    background-size: cover;
+    background-attachment: fixed;
+    color: #ffffff;
+    min-height: 100vh;
+    font-family: sans-serif;
+}
+
+/* Estilos para index.html */
+.index-body {
+    position: relative;
+    min-height: 100vh;
+}
+
+.background-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-image: url('./assets/images/soldado_asalto.webp');
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
+    opacity: 0.92;
+}
+
+.presentacion {
+    position: absolute;
+    top: 50%;
+    left: 10%;
+    transform: translateY(-50%);
+    text-align: left;
+    z-index: 2;
+}
+
+.logo-inicio {
+    max-width: 400px;
+    width: 100%;
+    height: auto;
+    margin-bottom: 40px;
+    filter: drop-shadow(0 0 20px rgba(255, 232, 31, 0.8));
+}
+
+.boton-ver-mas {
+    margin-top: 20px;
+}
+
+.boton {
+    display: inline-block;
+    padding: 15px 30px;
+    background: linear-gradient(45deg, #FFE81F, #FFA500);
+    color: #000;
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: bold;
+    font-size: 18px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 3px solid transparent;
+    position: relative;
+    overflow: hidden;
+}
+
+.boton::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    transition: left 0.6s ease;
+}
+
+.boton:hover::before {
+    left: 100%;
+}
+
+.boton:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(255, 232, 31, 0.4);
+    border-color: #FFE81F;
+}
+
+/* Pantalla de carga */
+.loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    opacity: 1;
+    transition: opacity 0.5s ease;
+}
+
+.loading-screen.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.loading-gif {
+    width: 200px;
+    height: 200px;
+    margin-bottom: 20px;
+}
+
+.loading-text {
+    color: #FFE81F;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* Estilos para busquedas.html */
+.card {
+    background-color: rgba(0, 0, 0, 0.8);
+    transition: all 0.3s ease;
+    border: 2px solid #374151;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    border-color: #FFE81F;
+    box-shadow: 0 10px 25px rgba(255, 232, 31, 0.3);
+}
+
+.card img {
+    transition: transform 0.3s ease;
+}
+
+.card:hover img {
+    transform: scale(1.05);
+}
+
+.loading-spinner {
+    border: 4px solid rgba(255, 232, 31, 0.3);
+    border-top: 4px solid #FFE81F;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.section-title {
+    color: #FFE81F;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+    margin-bottom: 2rem;
+}
+
+.nav-button {
+    background: linear-gradient(45deg, #FFE81F, #FFA500);
+    color: #000;
+    transition: all 0.3s ease;
+}
+
+.nav-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 232, 31, 0.4);
+}
+
+.nav-button.active {
+    background: linear-gradient(45deg, #FFA500, #FFE81F);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 232, 31, 0.6);
+}
+
+.volver-inicio-btn {
+    background: linear-gradient(45deg, #FFE81F, #FFD700);
+    box-shadow: 0 6px 12px rgba(255, 232, 31, 0.5);
+}
+
+.hidden {
+    display: none !important;
+}
+
+@media (max-width: 768px) {
+    .presentacion {
+        left: 5%;
+        transform: translateY(-50%);
+    }
+
+    .logo-inicio {
+        max-width: 300px;
+    }
+
+    .boton {
+        padding: 12px 24px;
+        font-size: 16px;
+    }
+}

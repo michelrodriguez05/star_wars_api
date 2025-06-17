@@ -1,38 +1,31 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Búsqueda de Star Wars</title>
-  <link rel="stylesheet" href="style.css" />
-  <script src="https://cdn.tailwindcss.com"></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Star Wars</title>
+    <link rel="stylesheet" href="./styles.css" />
 </head>
-<body class="min-h-screen flex flex-col items-center justify-center font-sans">
-  <header class="w-full py-6 bg-black bg-opacity-50 text-center">
-    <h1 class="text-4xl md:text-5xl font-bold text-yellow-400">Búsqueda de Star Wars</h1>
-    <p class="mt-2 text-lg md:text-xl text-gray-300">Explora personajes, planetas y naves de la galaxia</p>
-  </header>
-
-  <main class="flex-grow w-full max-w-6xl px-4 py-8">
-    <div class="mb-6 flex flex-col md:flex-row gap-4">
-      <select id="resourceType" class="p-3 rounded-lg bg-gray-800 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-yellow-400">
-        <option value="people">Personajes</option>
-        <option value="planets">Planetas</option>
-        <option value="starships">Naves</option>
-      </select>
-      <input id="searchInput" type="text" placeholder="Buscar (ej. Luke, Tatooine)" class="p-3 rounded-lg bg-gray-800 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-yellow-400 flex-grow">
-      <button id="searchButton" class="p-3 bg-yellow-400 text-black rounded-lg hover:bg-yellow-500 transition-colors">Buscar</button>
+<body class="index-body">
+    <!-- Pantalla de carga -->
+    <div class="loading-screen" id="loadingScreen">
+        <img src="./assets/images/star wars animation GIF.gif" alt="Loading..." class="loading-gif"/>
+        <div class="loading-text">Iniciando viaje a una galaxia muy, muy lejana...</div>
     </div>
 
-    <div id="loading" class="text-center text-xl text-yellow-400 hidden">Cargando...</div>
-    <div id="error" class="text-center text-red-400 text-lg hidden"></div>
-    <div id="results" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
-  </main>
+    <!-- Fondo -->
+    <div class="background-wrapper"></div>
 
-  <footer class="w-full py-4 bg-black bg-opacity-50 text-center text-sm text-gray-400">
-    <p>Desarrollado por Michel y [Nombre del compañero] | <a href="https://swapi.py4e.com/" class="text-yellow-400 hover:underline" target="_blank">SWAPI</a></p>
-  </footer>
+    <!-- Contenido principal -->
+    <main>
+        <section class="presentacion">
+            <img src="./assets/images/Star_Wars_Logo.png" alt="logo" class="logo-inicio"/>
+            <div class="boton-ver-mas">
+                <a href="busquedas.html" class="boton" id="iniciarViaje">Iniciar viaje</a>
+            </div>
+        </section>
+    </main>
 
-  <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
