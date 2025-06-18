@@ -1,5 +1,3 @@
-// script.js
-
 const API_URL = 'https://swapi.py4e.com/api/'; 
 let currentSection = 'people';
 const cache = {};
@@ -23,13 +21,17 @@ function initIndexPage() {
 // Muestra pantalla de carga
 function showLoadingScreen() {
     const loading = document.getElementById('loadingScreen');
-    if (loading) loading.style.display = 'flex';
+    if (loading) {
+        loading.style.display = 'flex';
+    }
 }
 
 // Oculta pantalla de carga
 function hideLoadingScreen() {
-    const loading = document.getElementById('loadingScreen');
-    if (loading) loading.style.display = 'none';
+    setTimeout(() => {
+        const loading = document.getElementById('loadingScreen');
+        if (loading) loading.classList.add('hidden');
+    }, 2000);
 }
 
 // Obtiene ID desde URL
@@ -38,14 +40,9 @@ function getIdFromUrl(url) {
     return parts[parts.length - 2];
 }
 
-// Obtiene imagen local o usa placeholder
+// Obtiene imagen local
 function getImageUrl(id, type) {
-    const imageType = type === 'people' ? 'characters' : type;
-    try {
-        return `./assets/images/${imageType}/${id}.jpg`;
-    } catch (error) {
-        return '';
-    }
+    return `./assets/images/${type}/${id}.jpg`;
 }
 
 // Manejador de error de imágenes
@@ -57,6 +54,29 @@ function handleImageError(img, type) {
         films: 'https://via.placeholder.com/300x400/1a1a2e/FFE81F?text=Película'
     };
     img.src = placeholders[type] || placeholders.people;
+}
+
+// Controlador del reproductor de música
+function setupAudioPlayer() {
+    const musicPlayer = document.getElementById('background-music');
+    const toggleMusicBtn = document.getElementById('toggle-music');
+
+    if (musicPlayer && toggleMusicBtn) {
+        // Iniciar música automáticamente
+        musicPlayer.play().catch(error => {
+            console.error('Error al reproducir música:', error);
+        });
+
+        toggleMusicBtn.addEventListener('click', () => {
+            if (musicPlayer.muted) {
+                musicPlayer.muted = false;
+                toggleMusicBtn.style.borderColor = '#FFE81F'; // Desactivado 
+            } else {
+                musicPlayer.muted = true;
+                toggleMusicBtn.style.borderColor = '#FFA500'; // Activado
+            }
+        });
+    }
 }
 
 // Obtiene todos los datos paginados
@@ -177,21 +197,15 @@ function setupNavigation() {
             const section = e.target.dataset.section;
             if (!section) return;
 
-            // Mostrar loader
             showLoadingScreen();
 
-            // Oculta todas las secciones
             document.querySelectorAll('.section-content').forEach(sec => sec.classList.add('hidden'));
-
-            // Muestra la sección seleccionada
             const selectedSection = document.getElementById(section);
             if (selectedSection) selectedSection.classList.remove('hidden');
 
-            // Marca el botón activo
             document.querySelectorAll('.nav-button').forEach(btn => btn.classList.remove('active'));
             e.target.classList.add('active');
 
-            // Carga datos si es necesario
             if (!cache[section]) {
                 const data = await fetchAllData(section);
                 switch (section) {
@@ -202,8 +216,7 @@ function setupNavigation() {
                 }
             }
 
-            // Ocultar loader
-            hideLoadingScreen();
+            setTimeout(hideLoadingScreen, 2000);
         });
     });
 }
@@ -237,15 +250,15 @@ function setupSearch() {
             }
         }
 
-        hideLoadingScreen();
+        setTimeout(hideLoadingScreen, 2000);
     });
 }
 
 // Inicia la aplicación
 function initSearchPage() {
     setupNavigation();
+    setupAudioPlayer();
 
-    // Carga inicial de datos y muestra directamente la sección 'people'
     fetchAllData('people/').then(data => {
         displayPeople(data);
         document.getElementById('people').classList.remove('hidden');
@@ -271,3 +284,4 @@ window.onerror = (event) => {
     console.error('Error capturado:', event);
     showErrorNotification('Ocurrió un error inesperado. Por favor, recarga la página.');
 };
+

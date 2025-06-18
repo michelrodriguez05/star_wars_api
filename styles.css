@@ -5,7 +5,7 @@
 }
 
 body {
-    background-image: url(./assets/images/star.webp); 
+    background-image: url(./assets/images/star.webp);
     background-size: cover;
     background-attachment: fixed;
     color: #ffffff;
@@ -13,7 +13,6 @@ body {
     font-family: sans-serif;
 }
 
-/* Estilos para index.html */
 .index-body {
     position: relative;
     min-height: 100vh;
@@ -191,6 +190,21 @@ body {
     display: none !important;
 }
 
+header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+main {
+    margin-top: 10rem;
+}
+
+.section-content {
+    margin-top: 2rem;
+}
+
 @media (max-width: 768px) {
     .presentacion {
         left: 5%;
@@ -206,3 +220,4 @@ body {
         font-size: 16px;
     }
 }
+
