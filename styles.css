@@ -5,7 +5,7 @@
 }
 
 body {
-    background-image: url('https://images.unsplash.com/photo-1538370965046-79c0d6907d47'); 
+    background-image: url(./assets/images/star.webp); 
     background-size: cover;
     background-attachment: fixed;
     color: #ffffff;
